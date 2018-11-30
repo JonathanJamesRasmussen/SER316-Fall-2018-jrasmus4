@@ -89,8 +89,6 @@ public class EventsManager {
 
 	public static boolean isNREventsForDate(CalendarDate date) {
 		Day d = getDay(date);
-		if (d == null)
-			return false;
 		if (d.getElement().getChildElements("event").size() > 0)
 			return true;
 		return false;
@@ -226,8 +224,6 @@ public class EventsManager {
 
 	public static Event getEvent(CalendarDate date, int hh, int mm) {
 		Day d = getDay(date);
-		if (d == null)
-			return null;
 		Elements els = d.getElement().getChildElements("event");
 		for (int i = 0; i < els.size(); i++) {
 			Element el = els.get(i);
@@ -347,8 +343,6 @@ public class EventsManager {
 		}
 
 		public Day getDay(int d) {
-			if (mElement == null)
-				return null;
 			Elements ds = mElement.getChildElements("day");
 			String dd = new Integer(d).toString();
 			for (int i = 0; i < ds.size(); i++)
@@ -379,8 +373,6 @@ public class EventsManager {
 		}
 
 		public Vector getDays() {
-			if (mElement == null)
-				return null;
 			Vector v = new Vector();
 			Elements ds = mElement.getChildElements("day");
 			for (int i = 0; i < ds.size(); i++)

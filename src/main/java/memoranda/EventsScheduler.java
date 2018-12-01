@@ -151,7 +151,7 @@ public class EventsScheduler {
      * This EventsScheduler was the only class using it, and it wasn't doing much,
      * so I considered this a Lazy Class.  It made more sense to just have it here.
      */
-    private class DefaultEventNotifier implements IEventNotificationListener {
+    static class DefaultEventNotifier implements IEventNotificationListener {
 
         /**
          * Constructor for DefaultEventNotifier.
@@ -176,4 +176,5 @@ public class EventsScheduler {
             //
         }
     
+    }
 }

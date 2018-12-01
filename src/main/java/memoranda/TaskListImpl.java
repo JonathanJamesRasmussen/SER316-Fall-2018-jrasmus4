@@ -369,5 +369,9 @@ public class TaskListImpl implements ITaskList {
     }
 
     //TASK 2-1 SMELL WITHIN A CLASS
+    /*
+     * There was a large block of commented out code which I removed,
+     * as commented out code is a code smell.
+     */
 
 }

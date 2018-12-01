@@ -15,6 +15,7 @@ import java.util.Vector;
 
 import main.java.memoranda.interfaces.IEvent;
 import main.java.memoranda.interfaces.IEventNotificationListener;
+import main.java.memoranda.ui.EventNotificationDialog;
 
 /**
  *
@@ -26,6 +27,7 @@ public class EventsScheduler {
     static Vector _listeners = new Vector();
 
     static Timer changeDateTimer = new Timer();
+    
 
     static {
         addListener(new DefaultEventNotifier());            
@@ -144,5 +146,34 @@ public class EventsScheduler {
         }
     }
 
+    //TASK 2-2 SMELL BETWEEN CLASSES
+    /*I moved the DefaultEventNotifier class into a private inner class.
+     * This EventsScheduler was the only class using it, and it wasn't doing much,
+     * so I considered this a Lazy Class.  It made more sense to just have it here.
+     */
+    private class DefaultEventNotifier implements IEventNotificationListener {
 
+        /**
+         * Constructor for DefaultEventNotifier.
+         */
+        public DefaultEventNotifier() {
+            super();
+        }
+
+        /**
+         * @see main.java.memoranda.interfaces.IEventNotificationListener#eventIsOccured(main.java.memoranda.interfaces.IEvent)
+         */
+        public void eventIsOccured(IEvent ev) {     
+            new EventNotificationDialog(
+                "Memoranda event",
+                ev.getTimeString(),
+                ev.getText());
+        }
+        /**
+         * @see main.java.memoranda.interfaces.IEventNotificationListener#eventsChanged()
+         */
+        public void eventsChanged() {
+            //
+        }
+    
 }
